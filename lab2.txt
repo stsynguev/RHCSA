@@ -1,0 +1,15 @@
+    6  touch file1
+    7  touch file2
+    8  touch file3
+    9  touch file4
+   10  touch file5
+   11  touch file6 file7 file8 file9 file10
+   12  touch file{11..15}
+   13  mkdir -p .dira/.dir{b..c}
+   15  mkdir .dirh
+   16  touch .dirh/.file
+   18  cp .dirh/.file ./file
+   21  cp -ln file newfile
+   25  mkdir dird
+   29  cp -rvin .dirh dird/
+   35  cp -rvin .dira dird 
