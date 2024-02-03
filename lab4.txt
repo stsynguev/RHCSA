@@ -1,0 +1,10 @@
+    1  tail -7 /etc/group
+    2  head -7 /etc/group
+    3  cat -n /etc/group
+    4  tail -n +14 /etc/group
+    5  cat -n /etc/group | head -10
+    6  cat -n /etc/group | tail -10
+    7  cat -n /etc/group | tail -n +14
+    8  less /etc/passwd
+    9  grep -r sync /etc/ 2>/dev/null 
+   10  egrep -r "[sS]ync" /etc/ 2>/dev/null 
