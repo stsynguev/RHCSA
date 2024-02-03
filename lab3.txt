@@ -1,0 +1,14 @@
+    5  mkdir .dirh
+    6  touch file
+    7  mv -v file .dirh/
+    8  touch file{20..29}
+    9  cp -lv file2* .dirh/
+   10  rm -v file2*
+   12  ln -s .dirh/
+   13  ln -s .dirh/ dirlink
+   14  ln -s dirlink/file20 softlink20
+   15  ln -s dirlink/file30 softlink30
+   16  ln -s dira/ dirlink
+   17  mkdir dir1
+   18  touch dir1/file1
+   19  mv -vi dir1/file1 dir1/file2
