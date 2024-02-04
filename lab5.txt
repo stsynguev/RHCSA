@@ -1,0 +1,15 @@
+mkdir ~/myfiles
+cd myfiles
+cp /etc/passwd .
+nano passwd
+"ctrl \" type false then true then Y
+"ctrl -" type 16 to find 16th row then "ctrl k" to delete row
+nano ~/.nanorc type set linenumbers
+vi passwd
+press o after 5 row, type Hello, then :wq or shift ZZ
+type world pressing i then q!
+cat passwd | grep -n Hello
+
+
+ 
+ 
