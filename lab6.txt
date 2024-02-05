@@ -1,0 +1,5 @@
+    1  sudo tail -10 /var/log/kdump.log > mykernel
+    2  tail -n +13 /etc/group | head -9 >> mykernel 
+    3  cat mykernel /etc/DDD > result.log 2>/tmp/errors
+    4  tail -n +13 /etc/group | head -8 > ~/lines 
+    5  head -16 /etc/passwd | tail -1 >> ~/lines 
