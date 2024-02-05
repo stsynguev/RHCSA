@@ -1,0 +1,5 @@
++ 2024-02-05 22:09:34 /usr/bin/kdumpctl@685: /sbin/kexec -s -d -p '--command-line=BOOT_IMAGE=(hd0,msdos1)/boot/vmlinuz-5.14.0-284.11.1.el9_2.x86_64 ro resume=UUID=441a2ca3-0f52-42b1-98c7-5dd8f4655d83 rhgb irqpoll nr_cpus=1 reset_devices cgroup_disable=memory mce=off numa=off udev.children-max=2 panic=10 acpi_no_memhotplug transparent_hugepage=never nokaslr hest_disable novmcoredd cma=0 hugetlb_cma=0 disable_cpu_apicid=0' --initrd=/boot/initramfs-5.14.0-284.11.1.el9_2.x86_64kdump.img /boot/vmlinuz-5.14.0-284.11.1.el9_2.x86_64
+Try gzip decompression.
+Try LZMA decompression.
++ 2024-02-05 22:09:36 /usr/bin/kdumpctl@689: ret=0
++ 2024-02-05 22:09:36 /usr/bin/kdumpctl@690: set +x
