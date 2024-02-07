@@ -1,0 +1,5 @@
+    1  echo 'curtime=$(date)' >> ~/.bashrc
+    2  . ~/.bashrc
+    3  echo $curtime 
+    4  varlog=$USER\@$HOSTNAME
+    5  echo $varlog 
