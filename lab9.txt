@@ -1,0 +1,8 @@
+    2  ps -ef | grep -E ^student
+    3  ps -ef | grep -E \ pts/
+    4  ps -ef | grep gedit
+    5  ps -f 3768
+    6  ps -f 3735
+    7  ps -f 3717
+    8  ps -f 2069
+    9  ps -f 1
