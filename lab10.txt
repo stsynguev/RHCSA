@@ -1,0 +1,59 @@
+    1  ps -ef | grep gedit
+    2  ps -f 5787
+    3  ps -ef | grep 5787
+    4  ps -ef | grep gedit
+    5  kill -9 5787
+    6  ps -ef | grep gedit
+    7  ps -ef | grep nano
+    8  ps -ef | grep ping
+    9  ps -f 5045
+   14  mkdir lab10
+   15  cd lab10
+   16  touch lab10.txt
+   17  cd -
+[student@localhost ~]$ ps -ef | grep gedit
+student     5835    5787  1 03:46 pts/1    00:00:00 gedit
+student     5860    4424  0 03:47 pts/0    00:00:00 grep --color=auto gedit
+[student@localhost ~]$ ps -f 5787
+UID          PID    PPID  C STIME TTY      STAT   TIME CMD
+student     5787    5769  0 03:46 pts/1    Ss     0:00 bash
+[student@localhost ~]$ ps -ef | grep 5787
+student     5787    5769  0 03:46 pts/1    00:00:00 bash
+student     5835    5787  1 03:46 pts/1    00:00:00 gedit
+student     5871    4424  0 03:47 pts/0    00:00:00 grep --color=auto 5787
+[student@localhost ~]$ ps -ef | grep 5787
+student     5787    5769  0 03:46 pts/1    00:00:00 bash
+student     5876    5787  1 03:47 pts/1    00:00:00 gedit
+student     5898    5787  0 03:47 pts/1    00:00:00 ping 8.8.8.8
+student     5932    5787  0 03:48 pts/1    00:00:00 nano
+student     5934    4424  0 03:48 pts/0    00:00:00 grep --color=auto 5787
+[student@localhost ~]$ kill -15 5787
+[student@localhost ~]$ ps -ef | grep gedit
+student     5876    5787  0 03:47 pts/1    00:00:00 gedit
+student     5939    4424  0 03:49 pts/0    00:00:00 grep --color=auto gedit
+[student@localhost ~]$ ps -ef | grep gedit
+student     5876    5787  0 03:47 pts/1    00:00:00 gedit
+student     5941    4424  0 03:49 pts/0    00:00:00 grep --color=auto gedit
+[student@localhost ~]$ ps -ef | grep gedit
+student     5876    5787  0 03:47 pts/1    00:00:00 gedit
+student     5943    4424  0 03:49 pts/0    00:00:00 grep --color=auto gedit
+[student@localhost ~]$ ps -ef | grep gedit
+student     5876    5787  0 03:47 pts/1    00:00:00 gedit
+student     5945    4424  0 03:49 pts/0    00:00:00 grep --color=auto gedit
+[student@localhost ~]$ ps -ef | grep gedit
+student     5876    5787  0 03:47 pts/1    00:00:00 gedit
+student     5947    4424  0 03:49 pts/0    00:00:00 grep --color=auto gedit
+[student@localhost ~]$ kill -9 5787
+[student@localhost ~]$ ps -ef | grep gedit
+student     5876    5045  0 03:47 ?        00:00:00 gedit
+student     5950    4424  0 03:49 pts/0    00:00:00 grep --color=auto gedit
+[student@localhost ~]$ ps -ef | grep nano
+student     5952    4424  0 03:49 pts/0    00:00:00 grep --color=auto nano
+[student@localhost ~]$ ps -ef | grep ping
+student     5346    5045  0 03:46 ?        00:00:00 /usr/libexec/gsd-housekeeping
+student     5898    5045  0 03:47 ?        00:00:00 ping 8.8.8.8
+student     5954    4424  0 03:49 pts/0    00:00:00 grep --color=auto ping
+[student@localhost ~]$ ps -f 5045
+UID          PID    PPID  C STIME TTY      STAT   TIME CMD
+student     5045       1  0 03:46 ?        Ss     0:00 /usr/lib/systemd/systemd --user
+
