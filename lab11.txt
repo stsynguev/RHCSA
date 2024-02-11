@@ -1,0 +1,32 @@
+    1  echo >  .bash_history
+    2  sudo userdel user2
+    3  rm -rf /home/user2
+    4  sudo rm -rf /home/user2
+    5  clear
+    6  sudo useradd user2
+    7  sudo passwd user2
+    8  sudo cat /etc/passwd
+    9  sudo cat /etc/passwd | grep user2
+   10  clear
+   11  su user2
+   12  su - user2
+   13  su user2
+   14  w
+   15  su user2 -c "touch file"
+   16  su - user2 -c "touch file"
+   17  ls
+   18  ls -l file
+   19  time
+   20  date
+   21  ls /home/user2/
+   22  sudo ls /home/user2/
+   23  sudo ls -l /home/user2/
+   24  su - -c "nano /etc/passwd"
+   25  su
+   26  clear
+   27* mkdi
+   28  history > /lab11/lab11.txt
+   29  mkdir lab11
+   30  touch lab11/lab11.txt
+   31  history 
+   32  history > lab11/lab11.txt 
