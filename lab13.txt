@@ -1,0 +1,117 @@
+
+#sudoers file
+Defaults   !visiblepw
+Defaults    always_set_home
+Defaults    match_group_by_gid
+Defaults    always_query_group_plugin
+Defaults    env_reset
+Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS EDITOR"
+Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+Defaults    timestamp_timeout = 60
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+root	ALL=(ALL) 	ALL
+%wheel		ALL=(ALL)	ALL
+sysadmin	ALL=(ALL)	ALL
+student ALL=(user1) NOPASSWD: /bin/cat /home/user1/file
+netadmin ALL=(root) NOPASSWD: /usr/bin/nmtui 
+helpdesk ALL=(root) NOPASSWD: /usr/bin/passwd, !/usr/bin/passwd sysadmin,!/usr/bin/passwd root
+Defaults log_output
+Defaults!/usr/bin/sudoreplay !log_output
+Defaults!/sbin/reboot !log_output
+
+#etc/passwd file
+student:x:1000:1000:student:/home/student:/bin/bash
+sysadmin:x:10101:10000::/home/IT//sysadmin:/bin/bash
+helpdesk:x:10201:10000::/home/IT//helpdesk:/bin/bash
+netadmin:x:10301:10000::/home/IT//netadmin:/bin/bash
+user.marketing:x:10302:10302::/home/marketing:/sbin/nologin
+user.sales:x:10303:10303::/home/sales:/sbin/nologin
+manager.marketing:x:10304:10302::/home/manager.marketing:/bin/bash
+manager.sales:x:10305:10303::/home/manager.sales:/bin/bash
+
+#etc/group file
+IT:x:10000:
+sysadmin:x:10101:
+helpdesk:x:10201:
+netadmin:x:10301:
+marketing:x:10302:user.marketing,manager.marketing
+sales:x:10303:manager.sales,user.sales
+user.marketing:x:10304:
+user.sales:x:10305:
+manager.marketing:x:10306:
+manager.sales:x:10307:
+
+
+#.bash_history file
+    2  sudo mkdir /home/IT
+    3  sudo groupadd IT -g 10000
+    4  sudo useradd sysadmin -u 10101 -b /home/IT/ -s /bin/bash 
+    5  sudo useradd helpdesk -u 10201 -b /home/IT/ -s /bin/bash 
+    6  sudo useradd netadmin -u 10301 -b /home/IT/ -s /bin/bash 
+    8  sudo usermod sysadmin -ag IT 
+    9  sudo usermod sysadmin -g IT 
+   10  sudo usermod helpdesk -g IT 
+   11  sudo usermod netadmin -g IT 
+   14  sudo visudo
+   15  sudo passwd sysadmin 
+   16  sudo passwd helpdesk 
+   17  sudo passwd netadmin 
+   18  su - helpdesk 
+   19  sudo visudo
+   20  su - helpdesk 
+   21  su - netadmin 
+   22  sudo groupadd marketing
+   23  sudo groupadd sales
+   24  sudo groupadd IT
+   25  sudo mkdir /home/marketing
+   26  sudo mkdir /home/sales
+   27  sudo groupmod -b /home/marketing
+   28  sudo useradd user.marketing
+   29  sudo useradd user.sales
+   30  sudo useradd manager.marketing
+   31  sudo useradd manager.sales
+   32  sudo groupmod marketing -a user.marketing 
+   33  sudo groupmod -a marketing -U user.marketing 
+   34  sudo groupmod -a marketing -U manager.marketing 
+   35  sudo groupmod -a sales -U manager.sales 
+   36  sudo groupmod -a sales -U user.sales 
+   42  sudo grep sales /etc/group
+   45  sudo usermod user.sales -s /sbin/nologin
+   46  sudo usermod user.marketing -s /sbin/nologin
+   48  sudo usermod user.marketing -g marketing 
+   49  sudo usermod manager.marketing -g marketing 
+   50  sudo usermod manager.sales -g sales 
+   51  sudo usermod user.sales -g sales 
+   52  sudo grep user /etc/passwd
+   53  sudo usermod user.sales -b /home/marketing
+   54  sudo usermod user.sales -d /home/marketing
+   55  sudo usermod user.sales -d /home/sales
+   56  sudo usermod user.marketing -d /home/marketing
+   57  sudo grep user /etc/passwd
+   58  sudo grep manager /etc/passwd
+   59* sudo usermod .sales -g sales 
+   60  sudo usermod manager.marketing -g marketing 
+   61  sudo grep manager /etc/passwd
+   62  sudo grep marketing /etc/group
+   63  sudo grep manager /etc/passwd
+   64  sudo grep marketing /etc/passwd
+   65  sudo usermod manager.marketing -g 10302
+   66  sudo usermod manager.marketing -aG 10302
+   67  sudo grep marketing /etc/passwd
+   68  sudo usermod manager.marketing -G 10302
+   69  sudo grep marketing /etc/passwd
+   70  sudo usermod manager.marketing -g 10302
+   71  sudo passwd user.marketing 
+   72  sudo passwd user.sales 
+   73  sudo passwd manager.sales 
+   74  sudo passwd manager.marketing 
+   76  su - user.marketing 
+   77  su - manager.sales 
+   78  su - manager.marketing 
+   81  sudo grep user /etc/passwd
+   82  sudo grep manager /etc/passwd
+  100  rm -r lab13.txt 
+  111  nano lab13.txt 
