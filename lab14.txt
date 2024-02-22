@@ -1,0 +1,579 @@
+    1  clear
+    2  ls -l /etc/
+    3  clear
+    4  ls -l /etc/
+    5  clear
+    6  sudo groupadd company
+    7  sudo groupadd it
+    8  sudo groupadd sales
+    9  lid -g sales
+   10  sudo lid -g sales
+   11  sudo groupdel sales -r
+   12  sudo groupdel sales -f
+   13  sudo lid -g sales
+   14  sudo groupadd sales
+   15  sudo lid -g sales
+   16  mkdir company
+   17  mkdir company/it
+   18  mkdir company/sales
+   19  mkdir company/shared
+   20  ll -R company/
+   21  sudo useradd ituser1 -g company -aG it -s /usr/bin/bash 
+   22  sudo useradd-g company -aG it -s /usr/bin/bash ituser1
+   23  sudo useradd -g company -aG it -s /usr/bin/bash ituser1
+   24  sudo useradd -g company -G it -s /usr/bin/bash ituser1
+   25  sudo useradd -g company -G it -s /usr/bin/bash ituser2 -b /home/company/it
+   26  sudo usermod ituser1 -b /home/company/it
+   27  sudo usermod ituser1 -d /home/company/it
+   28  sudo useradd -g company -G it -s /usr/bin/bash ituser2 -d /home/company/it
+   29  sudo usermod -g company -G it -s /usr/bin/bash ituser2 -d /home/company/it
+   30  sudo useradd -g company -G it -s /usr/bin/bash itadmin -d /home/company/it
+   31  sudo useradd -g company -G it -s /usr/bin/bash itadmin -b /home/company/it
+   32  sudo lid ituser1
+   33  sudo lid ituser2
+   34  sudo lid itadmin
+   35  chage ituser1
+   36  hage ituser1
+   37  sudo chage -l ituser1
+   38  sudo grep it cat /etc/passwd
+   39  sudo usermod -g company
+   40  sudo usermod ituser1 -g company
+   41  sudo usermod ituser2 -g company
+   42  sudo usermod itadmin -g company
+   43  sudo grep it cat /etc/passwd
+   44  sudo grep it cat /etc/groups
+   45  sudo grep it cat /etc/group
+   46  sudo grep company cat /etc/group
+   47  sudo grep it cat /etc/group
+   48  sudo grep company cat /etc/group
+   49  sudo grep it cat /etc/group
+   50  sudo grep it cat /etc/passwd
+   51  clear
+   52  useradd -D
+   53  useradd --help
+   54  clear
+   55  sudo useradd suser1 -g company -G sales -d /home/company/sales -s /usr/bin/sh 
+   56  sudo useradd suser2 -g company -G sales -d /home/company/sales -s /usr/bin/sh 
+   57  sudo useradd suser2 -g company -G sales -b /home/company/sales -s /usr/bin/sh 
+   58  sudo useradd sadmin -g company -G sales -b /home/company/sales -s /usr/bin/sh 
+   59  ls -R company/
+   60  ll -R company/
+   61  sudo cat /etc/passwd | tail -10
+   62  history | grep itadmin
+   63  sudo usermod itadmin -g company
+   64  sudo usermod ituser1 -g company
+   65  sudo usermod ituser2 -g company
+   66  sudo cat /etc/passwd | tail -10
+   67  sudo lid -g company/
+   68  sudo lid -g company
+   69  sudo lid -g it
+   70  sudo lid -g sales
+   71  sudo cat /etc/group | tail -10
+   72  sudo cat /etc/group | grep company
+   73  clear
+   74  cd company/
+   75  ll
+   76  ll -d sales/
+   77  sudo chown -R :sales sales/
+   78  ll -d sales/
+   79  sudo chown root sales/
+   80  ll -d sales/
+   81  sudo chmod 770 sales/
+   82  ll -d sales/
+   83  ls sales/
+   84  sudo -u root ls sales/
+   85  touch sales/file1
+   86  sudo touch sales/file1
+   87  ls sales/
+   88  sudo -u root ls sales/
+   89  sudo chown root:it it/
+   90  ll -d it/
+   91  sudo chmod 770 it
+   92  ll -d shared/
+   93  sudo chown :company shared/
+   94  ll -d shared/
+   95  sudo chmod 770 shared/
+   96  sudo chmod g+s shared/
+   97  ll -d shared/
+   98  d ..
+   99  cd ..
+  100  cd ~
+  101  clear
+  102  sudo passwd ituser1
+  103  sudo passwd suser1
+  104  su - ituser1  -c  touch
+  105  su - ituser1
+  106  ls -R company/
+  107  cd company/
+  108  ll -d shared/
+  109  sudo chmod g-s shared/
+  110  ll -d shared/
+  111  su - ituser1
+  112  ll -d shared/
+  113  sudo lid -g company
+  114  clear
+  115  sudo groupadd academy
+  116  sudo groupadd teachers
+  117  sudo groupadd students
+  118  sudo mkdir -p /home/academy/students
+  119  sudo mkdir -p /home/academy/teachers
+  120  sudo mkdir -p /home/academy/teachers/te
+  121  sudo mkdir -p /home/academy/students/student
+  122  sudo useradd student -g students -d /home/academy/students/student/ 
+  123  sudo useradd student1 -g students -d /home/academy/students/student/ 
+  124  sudo useradd teacher1 -g students -d /home/academy/students/teacher
+  125  cd /home/academy/
+  126  ll -d students/
+  127  sudo chown :students students/
+  128  sudo chown :teachers teachers/
+  129  sudo chmod 770 students/
+  130  sudo chmod 770 teachers/
+  131  ll -d students/
+  132  ll -d teachers/
+  133  sudo passwd student1
+  134  sudo passwd teacher1 
+  135  su teacher1
+  136  id teacher1 
+  137  id student1
+  138  sudo usermod teacher1 -g teachers 
+  139  id teacher1 
+  140  id student1 
+  141  su teacher1
+  142  sudo useradd teacher1 -g students -d /home/academy/teachers
+  143  sudo usermod teacher1 -d /home/academy/teachers
+  144  su teacher1
+  145  sudo groupadd staff 
+  146  sudo getfacl 
+  147  sudo getfacl  --help
+  148  cd ..
+  149  ll -d academy/
+  150  sudo chown :staff academy/
+  151  useradd director -g staff 
+  152  sudo useradd director -g staff 
+  153  sudo passwd director 
+  154  su director/
+  155  su director
+  156  sudo chown : academy/
+  157  ll -d academy/
+  158  sudo chown :root academy/
+  159  ll -d academy/
+  160  sudo setfacl academy 
+  161  sudo setfacl -m g:staff:rwxacademy 
+  162  sudo setfacl -m g:staff:rwx academy 
+  163  ll -d academy/
+  164  su director
+  165  sudo setfacl -mR g:staff:rwx academy 
+  166  sudo setfacl -R g:staff:rwx academy 
+  167  sudo setfacl -R -m g:staff:rwx academy 
+  168  getfacl academy/
+  169  getfacl academy/students/
+  170  getfacl academy/students/student
+  171  sudo chown  academy/students/student
+  172  id student1
+  173  lid -d students
+  174  lid -l students
+  175  sudo lid students
+  176  sudo lid academy/
+  177  sudo lid -g teachers
+  178  sudo lid -U student1
+  179  sudo lid -u
+  180  sudo lid -u student/
+  181  sudo lid -u student
+  182  sudo lid -u student1
+  183  clear
+  184  sudo cat /etc/passwd | tail --5
+  185  sudo cat /etc/passwd | tail -5
+  186  sudo usermod teacher1 -b /home/academy/teachers/teacher
+  187  sudo usermod teacher1 -d /home/academy/teachers/teacher
+  188  sudo cat /etc/passwd | tail -5
+  189  sudo usermod director -d /home/academy/staff/diector
+  190  sudo ls -R academy/
+  191  sudo mkdir -P /home/academy/staff/director
+  192  sudo mkdir -p /home/academy/staff/director
+  193  sudo ls -R academy/
+  194  sudo cat /etc/passwd | tail -5
+  195  ll -d academy/students/student
+  196  su director/
+  197  su director
+  198  sudo chown student1:students academy/students/student
+  199  sudo chown teacher1:teachers academy/teachers/teacher
+  200  sudo ll -d academy/students/student
+  201  sudo ls -d academy/students/student
+  202  sudo ls -ld academy/students/student
+  203  sudo mkdir academy/shared
+  204  sudo mkdir academy/secret
+  205  sudo setfacl g:staff:rwx academy/secret/
+  206  sudo setfacl -m g:staff:rwx academy/secret/
+  207  sudo setfacl -m g:teachers:rwx academy/secret/
+  208  sudo setfacl -m g:students:--- academy/secret/
+  209  sudo getfacl academy/secret/
+  210  sudo chmod 770 academy/secret/
+  211  sudo getfacl academy/secret/
+  212  su teacher1
+  213  su director
+  214  sudo chmod 1770 academy/secret/
+  215  ll -d academy/secret/
+  216  sudo chmod g+s academy/secret/
+  217  ll -d academy/secret/
+  218  su director
+  219  su teacher1
+  220  su student1
+  221  alias spy="sudo ls -l academy/secret"
+  222  spy
+  223  sudo visudo 
+  224  e
+  225  sudo visudo 
+  226  su teacher1
+  227  su student1
+  228  sudo visudo 
+  229  su student1
+  230  su teacher1
+  231  sudo visudo 
+  232  id teacher1 
+  233  sudo visudo 
+  234  which rm
+  235  su student1
+  236  sudo visudo 
+  237  su student1
+  238  sudo cat /etc/group | tail -10
+  239  sudo groupmod --help
+  240  sudo groupmod -U teachers 
+  241  sudo groupmod teachers -U
+  242  groupmod teachers -U
+  243  groupmod teachers -aU teacher1
+  244  sudo groupmod teachers -aU teacher1
+  245  sudo groupmod studentss -aU student1
+  246  sudo groupmod students -aU student1
+  247  sudo cat /etc/group | tail -10
+  248  su student1
+  249  sudo cat /etc/group | tail -10
+  250  sudo visudo 
+  251  clear
+  252  ls /home/academy/secret/
+  253  sudo ls /home/academy/secret/
+  254  su student1
+  255  spy
+  256  su student1
+  257  ll -d /home/academy/secret/
+  258  ll  /home/academy/secret/
+  259  sudo ll  /home/academy/secret/
+  260  sudo ls  /home/academy/secret/
+  261  spy
+  262  su student1
+  263  sudo visudo 
+  264  su student1
+  265  sudo visudo 
+  266  su student1
+  267  history 
+  268  history | less
+  269  clear
+  270  history > lab14.txt
+  271  less lab14.txt 
+  272  rm -rf /home/company/
+  273  sudo rm -rf /home/company/
+  274  cd /home/
+  275  ls
+  276  sudo mkdir company
+  277  cd company/
+  278  sudo mkdir homedirs sales
+  279  ls
+  280  sudo mkdir marketing shared
+  281  ls -R
+  282  lid
+  283  sudo lid
+  284  sudo lid -g
+  285  sudo lid -G
+  286  sudo lid -g 
+  287   lid -g 
+  288  groupadd -D
+  289  sudo cat /etc/group
+  290  sudo cat /etc/group 
+  291  sudo cat /etc/group | grep :10
+  292  p
+  293  sudo groupadd sales
+  294  sudo groupadd marketing
+  295  sudo groupadd company
+  296  sudo useradd mike -g sales -G company -b /home/company/homedirs/ 
+  297  sudo useradd john -g marketing -G company -b /home/company/homedirs/ 
+  298  sudo groupmod --help
+  299  sudo groupmod -U
+  300  sudo groupmod -aU
+  301  sudo lid -g sales
+  302  sudo lid -g marketing
+  303  sudo lid -g company
+  304  sudo chown :sales /home/company/sales/
+  305  sudo chown :marketing /home/company/marketing/
+  306  sudo chmod 770 /home/company/sales/
+  307  sudo chmod 770 /home/company/marketing/
+  308  ls
+  309  ll -d shared/
+  310  sudo chown :company shared/
+  311  sudo chmod g+s shared/
+  312  ll -d shared/
+  313  touch shared/file1
+  314  sudo touch shared/file1
+  315  ls shared/
+  316  ll shared/
+  317  ll -d sales/
+  318  ll -d marketing/
+  319  cat /etc/passwd | tail -2
+  320  sudo grep 10317 cat /etc/group
+  321  sudo cat /etc/group | grep 10317
+  322  sudo cat /etc/group | grep 10311
+  323  sudo cat /etc/group | grep 10302
+  324  id mike
+  325  sudo passwd mike
+  326  sudo passwd john
+  327  su - mike
+  328  su - john 
+  329  sudo cat /etc/group | grep 10311
+  330  sudo cat /etc/group | grep 10302
+  331  sudo cat /etc/login.defs 
+  332  sudo cat /etc/login.defs | less
+  333  groups mike
+  334  groups john
+  335  getent --help
+  336  getent group sales
+  337  getent group marketing 
+  338  id -a mike
+  339  id -a john
+  340  members sales
+  341  sudo lid -g sales
+  342  sudo lid -g marketing
+  343  sudo cat /etc/group | grep 10302
+  344  sudo cat /etc/group | grep 10311
+  345  logout 
+  346  sudo cat /etc/group | grep 10311
+  347  sudo shutdown -r now
+  348  sudo cat /etc/group | grep 10311
+  349  sudo cat /etc/group | grep 10302
+  350  groupmod --help
+  351  sudo cat /etc/group | grep 10311
+  352  sudo groupmod sales -a -U mike
+  353  sudo groupmod marketing -a -U john
+  354  sudo cat /etc/group | grep 10311
+  355  sudo cat /etc/group | grep 10302
+  356  getent group sales
+  357  groups mike
+  358  id -a mike
+  359  id -a john
+  360  clear
+  361  sudo mkdir /home/data
+  362  cd /home/data/
+  363  sudo mkdir marketing sales it
+  364  sudo useradd user.marketing
+  365  sudo useradd user.sales
+  366  sudo useradd admin
+  367  sudo useradd backup
+  368  sudo chown user.marketing marketing/
+  369  sudo chown user.sales sales/
+  370  ll -d sales/
+  371  ll -d marketing/
+  372  sudo chown :sales sales/
+  373  sudo chown :marketing marketing/
+  374  ll -d marketing/
+  375  ll -d sales/
+  376  sudo chmod 770 sales/
+  377  sudo chmod 770 marketing/
+  378  sudo chmod 700 marketing/
+  379  sudo chmod 700 sales/
+  380  ll 
+  381  sudo chown admin:it it/
+  382  sudo chmod 700 it/
+  383  ll
+  384  getfacl it
+  385  sudo setfacl u:admin:rwx it
+  386  sudo setfacl -m u:admin:rwx it
+  387  sudo setfacl -m u:admin:rwx sales/
+  388  sudo setfacl -m u:admin:rwx marketing/
+  389  getfacl it
+  390  getfacl sales/
+  391  getfacl marketing/
+  392  sudo setfacl -m u:backup:r-- marketing/
+  393  sudo setfacl -m u:backup:r-- it/
+  394  sudo setfacl -m u:backup:r-- sales/
+  395  getfacl sales/
+  396  getfacl it
+  397  getfacl marketing/
+  398  cd ..
+  399  sudo mkdir company/
+  400  sudo chown root:company company/
+  401  ll -d company/
+  402  sudo chmod 770 company/
+  403  sudo chmod g+s company/
+  404  cd company/
+  405  ls cd company/
+  406  sudo cd company/
+  407  ls
+  408  ll
+  409  touch file
+  410  sudo touch file
+  411  ll file 
+  412  pwd
+  413  sudo cd company/ 
+  414  pwd
+  415  su -
+  416  cd ~
+  417  history > lab14.txt
+suser2:x:10311:10309::/home/company/sales:/usr/bin/sh
+sadmin:x:10312:10309::/home/company/sales/sadmin:/usr/bin/sh
+itadmin:x:10313:10309::/home/company/it/itadmin:/usr/bin/bash
+student1:x:10314:10314::/home/academy/students/student/:/bin/bash
+teacher1:x:10315:10313::/home/academy/teachers/teacher:/bin/bash
+director:x:10316:10315::/home/academy/staff/diector:/bin/bash
+mike:x:10317:10311::/home/company/homedirs//mike:/bin/bash
+john:x:10318:10302::/home/company/homedirs//john:/bin/bash
+admin:x:10319:10319::/home/admin:/bin/bash
+backup:x:10320:10320::/home/backup:/bin/bash
+groups:x:10308:student
+company:x:10309:mike,john
+it:x:10310:ituser1,ituser2,itadmin
+sales:x:10311:suser1,suser2,sadmin,mike
+academy:x:10312:
+teachers:x:10313:teacher1
+students:x:10314:student1
+staff:x:10315:
+admin:x:10319:
+backup:x:10320:
+# %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
+
+## Allows members of the users group to shutdown this system
+# %users  localhost=/sbin/shutdown -h now
+
+## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /etc/sudoers.d
+Defaults log_output
+Defaults!/usr/bin/sudoreplay !log_output
+Defaults!/sbin/reboot !log_output
+## Sudoers allows particular users to run various commands as
+## the root user, without needing the root password.
+##
+## Examples are provided at the bottom of the file for collections
+## of related commands, which can then be delegated out to particular
+## users or groups.
+## 
+## This file must be edited with the 'visudo' command.
+
+## Host Aliases
+## Groups of machines. You may prefer to use hostnames (perhaps using 
+## wildcards for entire domains) or IP addresses instead.
+# Host_Alias     FILESERVERS = fs1, fs2
+# Host_Alias     MAILSERVERS = smtp, smtp2
+
+## User Aliases
+## These aren't often necessary, as you can use regular groups
+## (ie, from files, LDAP, NIS, etc) in this file - just use %groupname 
+## rather than USERALIAS
+# User_Alias ADMINS = jsmith, mikem
+
+
+## Command Aliases
+## These are groups of related commands...
+
+## Networking
+# Cmnd_Alias NETWORKING = /sbin/route, /sbin/ifconfig, /bin/ping, /sbin/dhclient, /usr/bin/net, /sbin/iptables, /usr/bin/rfcomm, /usr/bin/wvdial, /sbin/iwconfig, /sbin/mii-tool
+
+## Installation and management of software
+# Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum
+
+## Services
+# Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig, /usr/bin/systemctl start, /usr/bin/systemctl stop, /usr/bin/systemctl reload, /usr/bin/systemctl restart, /usr/bin/systemctl status, /usr/bin/systemctl enable, /usr/bin/systemctl disable
+
+## Updating the locate database
+# Cmnd_Alias LOCATE = /usr/bin/updatedb
+
+## Storage
+# Cmnd_Alias STORAGE = /sbin/fdisk, /sbin/sfdisk, /sbin/parted, /sbin/partprobe, /bin/mount, /bin/umount
+
+## Delegating permissions
+# Cmnd_Alias DELEGATING = /usr/sbin/visudo, /bin/chown, /bin/chmod, /bin/chgrp 
+
+## Processes
+# Cmnd_Alias PROCESSES = /bin/nice, /bin/kill, /usr/bin/kill, /usr/bin/killall
+
+## Drivers
+# Cmnd_Alias DRIVERS = /sbin/modprobe
+
+# Defaults specification
+
+#
+# Refuse to run if unable to disable echo on the tty.
+#
+Defaults   !visiblepw
+
+#
+# Preserving HOME has security implications since many programs
+# use it when searching for configuration files. Note that HOME
+# is already set when the the env_reset option is enabled, so
+# this option is only effective for configurations where either
+# env_reset is disabled or HOME is present in the env_keep list.
+#
+Defaults    always_set_home
+Defaults    match_group_by_gid
+
+# Prior to version 1.8.15, groups listed in sudoers that were not
+# found in the system group database were passed to the group
+# plugin, if any. Starting with 1.8.15, only groups of the form
+# %:group are resolved via the group plugin by default.
+# We enable always_query_group_plugin to restore old behavior.
+# Disable this option for new behavior.
+Defaults    always_query_group_plugin
+
+Defaults    env_reset
+Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS EDITOR"
+Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+Defaults    timestamp_timeout = 60
+
+#
+# Adding HOME to env_keep may enable a user to run unrestricted
+# commands via sudo.
+#
+# Defaults   env_keep += "HOME"
+
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+
+## Next comes the main part: which users can run what software on 
+## which machines (the sudoers file can be shared between multiple
+## systems).
+## Syntax:
+##
+## 	user	MACHINE=COMMANDS
+##
+## The COMMANDS section may have other options added to it.
+##
+## Allow root to run any commands anywhere 
+root	ALL=(ALL) 	ALL
+## Allows members of the 'sys' group to run networking, software, 
+## service management apps and more.
+# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+
+## Allows people in group wheel to run all commands
+%wheel		ALL=(ALL)	ALL
+sysadmin	ALL=(ALL)	ALL
+
+## Allow users run sudo
+student ALL=(user1) NOPASSWD: /bin/cat /home/user1/file
+netadmin ALL=(root) NOPASSWD: /usr/bin/nmtui 
+helpdesk ALL=(root) NOPASSWD: /usr/bin/passwd, !/usr/bin/passwd sysadmin,!/usr/bin/passwd root
+
+%students ALL=(root) NOPASSWD: /usr/bin/ls /home/academy/secret
+%students ALL=(%teachers) NOPASSWD: /usr/bin/rm /home/academy/secret/*
+
+## Same thing without a password
+# %wheel	ALL=(ALL)	NOPASSWD: ALL
+
+## Allows members of the users group to mount and unmount the 
+## cdrom as root
+# %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
+
+## Allows members of the users group to shutdown this system
+# %users  localhost=/sbin/shutdown -h now
+
+## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /etc/sudoers.d
+Defaults log_output
+Defaults!/usr/bin/sudoreplay !log_output
+Defaults!/sbin/reboot !log_output
