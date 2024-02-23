@@ -1,0 +1,106 @@
+Disk /dev/nvme0n1: 40 GiB, 42949672960 bytes, 83886080 sectors
+Disk model: VMware Virtual NVMe Disk
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x9735e96f
+
+Device         Boot    Start      End  Sectors Size Id Type
+/dev/nvme0n1p1 *        2048 20973567 20971520  10G 83 Linux
+/dev/nvme0n1p2      20973568 23070719  2097152   1G 82 Linux swap / Solaris
+
+
+Disk /dev/nvme0n2: 1 GiB, 1073741824 bytes, 2097152 sectors
+Disk model: VMware Virtual NVMe Disk
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xaf17b13c
+
+Device         Boot  Start    End Sectors Size Id Type
+/dev/nvme0n2p1        2048 104447  102400  50M 83 Linux
+/dev/nvme0n2p2      104448 206847  102400  50M 83 Linux
+/dev/nvme0n2p3      206848 309247  102400  50M 83 Linux
+
+
+Disk /dev/nvme0n3: 1 GiB, 1073741824 bytes, 2097152 sectors
+Disk model: VMware Virtual NVMe Disk
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: BF38B4CC-3F15-A144-8563-96128CCB2B4B
+
+Device          Start    End Sectors  Size Type
+/dev/nvme0n3p1   2048 206847  204800  100M Linux filesystem
+/dev/nvme0n3p2 206848 411647  204800  100M Linux filesystem
+    1  clear
+    2  ls /etc/modprobe.d/
+    3  sudo cat /etc/modprobe.d/tuned.conf 
+    4  sudo cat /etc/modprobe.d/firewalld-sysctls.conf 
+    5  modinfo radeon
+    6  sudo cat /etc/modprobe.d/tuned.conf 
+    7  tuned
+    8  sudo tuned
+    9  ls /dev/sd*
+   10  ls /dev/
+   11  ls -l /dev/nvme0
+   12  ls -l /dev/nvme0n1
+   13  ls -l /dev/nvme0n1p1 
+   14  ls -l /dev/nvme0n1p2
+   15  stat /dev/nvme0
+   16  stat /dev/nvme0n1
+   17  stat /dev/nvme0n1p1
+   18  stat /dev/nvme0n1p2
+   19  ls -l /dev/nvme0n1p1 
+   20  ls -l /dev/nvme0
+   21  lsscsi 
+   22  lsscsi -s
+   23  clear
+   24  lsscsi -s
+   25  sudo fdisk /dev/nvme0n2
+   26  lsscsi -s
+   27  sudo fdisk /dev/nvme0n3
+   28  sudo fdisk /dev/nvme0n2
+   29  sudo fdisk -l
+   30  sudo fdisk -l | grep LVM
+   31  sudo fdisk -l /dev/nvme0n1
+   32  sudo cfdisk /dev/nvme0n3
+   33  sudo fdisk /dev/nvme0n3
+   34  clear
+   35  lsblk -R
+   36  lsblk -s
+   37  ll -R /dev/disk/
+   38  ll -R /dev/disk/ | less
+   39  ll -R /dev/disk/ 
+   40  ll -R /dev/disk/ | less
+   41  ll -R /dev/disk/ 
+   42  clear
+   43  ll -R /dev/disk/ 
+   44  ll -R /dev/disk/ | grep VMware
+   45  ll -R /dev/disk/ | grep -A 2 VMware
+   46  history 
+   47  lsscsi 
+   48  ls -l /dev/ | grep ^b
+   49  ls -l /dev/ | grep ^c
+   50  ls -l /dev/ | grep ^b
+   51  clear
+   52  fdisk 
+   53  fdisk -l
+   54  sudo fdisk -l
+   55  sudo fdisk /dev/nvme0n2
+   56  clear
+   57  sudo fdisk /dev/nvme0n2
+   58  p
+   59  sudo fdisk /dev/nvme0n2
+   60  sudo fdisk /dev/nvme0n3
+   61  sudo fdisk -l
+   62  sudo fdisk -l > lab15.txt
+   63  sudo fdisk /dev/nvme0n3
+   64  sudo fdisk -l
+   65  sudo fdisk -l /dev/nvme0n2
+   66  sudo fdisk -l /dev/nvme0n3
+   67  history 
+   68  history >> lab15.txt 
