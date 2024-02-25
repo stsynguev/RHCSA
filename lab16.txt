@@ -1,0 +1,69 @@
+
+  File: file
+  Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 10301h/66305d	Inode: 8792264     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/ student)   Gid: ( 1000/ student)
+Context: unconfined_u:object_r:user_home_t:s0
+Access: 2024-02-25 01:53:28.180279070 +0100
+Modify: 2024-02-25 01:53:28.180279070 +0100
+Change: 2024-02-25 01:53:28.180279070 +0100
+ Birth: 2024-02-25 01:53:28.180279070 +0100
+Disk /dev/nvme0n3: 1 GiB, 1073741824 bytes, 2097152 sectors
+Disk model: VMware Virtual NVMe Disk
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xdb0a1a02
+
+Device         Boot  Start     End Sectors  Size Id Type
+/dev/nvme0n3p1        2048  411647  409600  200M 83 Linux
+/dev/nvme0n3p2      411648 2097151 1685504  823M  5 Extended
+/dev/nvme0n3p5      413696  618495  204800  100M 83 Linux
+512
+512
+Linux 5.14.0-362.18.1.el9_3.x86_64 (localhost.localdomain) 	02/25/2024 	_x86_64_	(1 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.62    0.11    0.97    0.07    0.00   98.23
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+nvme0n1           4.06        93.33        18.96         0.00     850158     172661          0
+nvme0n2           0.03         0.59         0.00         0.00       5396          0          0
+nvme0n3           0.11         2.51         0.01         0.00      22886         76          0
+sr0               0.01         0.35         0.00         0.00       3154          0          0
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.00    0.00    1.98    0.00    0.00   98.02
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+nvme0n1           0.00         0.00         0.00         0.00          0          0          0
+nvme0n2           0.00         0.00         0.00         0.00          0          0          0
+nvme0n3           0.00         0.00         0.00         0.00          0          0          0
+sr0               0.00         0.00         0.00         0.00          0          0          0
+
+
+xfs                  2473984  1
+libcrc32c              16384  4 nf_conntrack,nf_nat,nf_tables,xfs
+filename:       /lib/modules/5.14.0-362.18.1.el9_3.x86_64/kernel/fs/ext4/ext4.ko.xz
+softdep:        pre: crc32c
+license:        GPL
+description:    Fourth Extended Filesystem
+author:         Remy Card, Stephen Tweedie, Andrew Morton, Andreas Dilger, Theodore Ts'o and others
+alias:          fs-ext4
+alias:          ext3
+alias:          fs-ext3
+alias:          ext2
+alias:          fs-ext2
+#!/bin/bash 
+echo > lab16.txt 
+stat file >> lab16.txt 
+sudo fdisk -l /dev/nvme0n3 >> lab16.txt 
+cat /sys/class/block/nvme0n3/queue/physical_block_size >> lab16.txt 
+cat /sys/class/block/nvme0n3/queue/logical_block_size >> lab16.txt 
+echo "press ^C to finish" 
+iostat 1 >> lab16.txt 
+#sudo pkill -15 iostat 
+lsmod | grep xfs >> lab16.txt 
+modinfo ext4 | head >> lab16.txt 
