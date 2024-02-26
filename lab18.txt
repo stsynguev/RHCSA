@@ -1,0 +1,79 @@
+sudo fdisk /dev/nvme0n2 
+sudo fdisk -l /dev/nvme0n2 
+mkfs.ext4 /dev/nvme0n2p1 
+sudo mkfs.ext4 /dev/nvme0n2p1 
+tune2fs -l /dev/nvme0np1 
+tune2fs -l /dev/nvme0n2p1 
+sudo tune2fs -l /dev/nvme0n2p1 
+sudo fdisk -l /dev/nvme0n2 
+sudo fdisk -l /dev/nvme0n2p1 
+sudo tune2fs -l /dev/nvme0n2p1 | head -5 
+blkid 
+blkid /dev/nvme0n2p1 
+blkid /dev/nvme0n2p2 
+blkid /dev/nvme0n2p3 
+fdisk -l /dev/nvme0n2p1 
+sudo fdisk -l /dev/nvme0n2p1 
+mount /dev/nvme0n2p1 /mnt/ 
+sudo mount /dev/nvme0n2p1 /mnt/ 
+fdisk -l /dev/nvme0n2p1 
+sudo fdisk -l /dev/nvme0n2p1 
+df -h 
+mv ~/myfiles/ /mnt/ 
+sudo mv ~/myfiles/ /mnt/ 
+sudo mv ~/myfiles/* /mnt/ 
+sudo mv /mnt/myfiles/* /mnt/ 
+umount /mnt 
+sudo umount /mnt 
+mount /dev/nvme0n2p1 ~/myfiles 
+sudo mount /dev/nvme0n2p1 ~/myfiles 
+sudo mount /dev/nvme0n2p1 /myfiles 
+sudo mkdir ~/myfiles 
+sudo mount /dev/nvme0n2p1 ~/myfiles 
+sudo blkid /dev/nvme0n2p1 
+sudo blkid /dev/nvme0n2p1 | cut -d" " -f2 
+sudo cp /etc/fstab{,.bkp} 
+sudo blkid /dev/nvme0n2p1 | cut -d" " -f2 >> /etc/fstab 
+blkid /dev/nvme0n2p1 | cut -d" " -f2 >> /etc/fstab 
+sudo blkid /dev/nvme0n2p1 | cut -d" " -f2 
+sudo $(sudo blkid /dev/nvme0n2p1 | cut -d" " -f2) >> /etc/fstab 
+sudo echo $(sudo blkid /dev/nvme0n2p1 | cut -d" " -f2) >> /etc/fstab 
+sudo echo $(sudo blkid /dev/nvme0n2p1 | cut -d" " -f2) 
+df -h 
+df -h 
+#
+# /etc/fstab
+# Created by anaconda on Sat Sep  2 20:55:29 2023
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+UUID=27f5e11a-7fd1-45da-84ed-d22e2240fd64 /			xfs     defaults		0 0
+UUID=441a2ca3-0f52-42b1-98c7-5dd8f4655d83 none			swap    defaults		0 0
+UUID="ae5011eb-ac12-4cdb-b01a-524824424c2d" /home		ext4	defaults,noatime	0 1
+UUID="4b03f5cc-0894-4126-b7f8-ba039916f53c" ~/myfiles		ext4	defaults,noatime	0 1
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           1.8G     0  1.8G   0% /dev/shm
+tmpfs           724M  9.5M  714M   2% /run
+/dev/nvme0n1p1   10G  5.2G  4.9G  52% /
+/dev/nvme0n3p5  769M  206M  508M  29% /home
+/dev/nvme0n2p1   42M  2.0K   39M   1% /~/myfiles
+tmpfs           362M   52K  362M   1% /run/user/42
+tmpfs           362M   36K  362M   1% /run/user/1000
+/dev/nvme0n2p2   45M  3.0M   42M   7% /home/student/mybackup
+sudo mkdir ~/mybackup 
+sudo fdisk -l /dev/nvme0n2p2 
+sudo mkfs.xfs /dev/nvme0n2p2 
+sudo blkid 
+sudo blkid /dev/nvme0n2p2 
+mount /dev/nvme0n2p2 ~/mybackup/ 
+sudo mount /dev/nvme0n2p2 ~/mybackup/ 
+mv /~/myfiles/* ~/mybackup/ 
+sudo mv -v /~/myfiles/* ~/mybackup/ 
+df -h 
+df -h >> lab18.txt 
+sudo umount ~/mybackup/ 
