@@ -1,0 +1,282 @@
+ls /home
+sudo umount /home
+su -
+ls /home/
+cd ~
+df -h
+sudo fdisk -l
+sudo fdisk -l /dev/nvme0n2
+d
+sudo fdisk -l /dev/nvme0n2
+sudo fdisk /dev/nvme0n2
+sudo fdisk /dev/nvme0n3
+sudo fdisk -l /dev/nvme0n3
+sudo fdisk -l /dev/nvme0n2
+sudo fdisk -l /dev/nvme0n1
+sudo fdisk -l /dev/nvme0n2
+sudo fdisk -l /dev/nvme0n3
+sudo fdisk /dev/nvme0n2
+sudo pvcreate /dev/nvme0n2p1
+sudo pvs
+sudo pvdisplay /dev/nvme0n2p1
+sudo pvs
+sudo vgcreate myvg /dev/nvme0n2p1
+sudo vgs
+sudo vgdisplay myvg
+sudo lvcreate myvg -n mylv -L 200M
+sudo lvcreate myvg -n mylv -l 80%FREE
+sudo lvs
+man lvcreate
+sudo lvdisplay myvg/mylv
+sudo mkfs.ext4 /dev/myvg/mylv
+df -h
+ll /dev/myvg/mylv
+ll /dev/dm-*
+sudo lsblk -f /dev/myvg/mylv
+tail -3 /etc/fstab
+tail -5 /etc/fstab
+ll /dev/mapper/
+ll /dev/myvg/mylv
+nano /etc/fstab
+sudo nano /etc/fstab
+tail -3 /etc/fstab
+ll /dev/mapper/
+sudo mkdir mydata
+sudo rm -
+sudo mkdir /mydata
+sudo mount /mydata/
+df -h
+df -h /mydata/
+
+sudo reboot 
+df -h /mydata/ 
+sudo fdisk -l /dev/nvme0n3 
+sudo pvcreate /dev/nvme0n3 
+sudo vgextend myvg /dev/nvme0n3 
+sudo vgdisplay myvg 
+df -h /mydata/ 
+sudo lvextend myvg/mylv -L +500M 
+sudo lvs 
+df -h /mydata/ 
+sudo resize2fs /dev/myvg/mylv 
+df -h /mydata/ 
+sudo lvextend myvg/mylv -L +100M -r 
+df -h /mydata/ 
+sudo nano /mydata/file 
+sudo lvcreate -s -n mysnapshot -L 100M myvg/mylv 
+df -h 
+sudo lvs myvg/mysnapshot 
+sudo lvs 
+sudo lvs myvg/mysnapshot 
+sudo nano /mydata/file 
+sudo lvs myvg/mysnapshot 
+sudo mount /dev/myvg/mysnapshot /mnt 
+sudo umount /mydata /mnt 
+sudo lvconvert --merge myvg/mysnapshot 
+df -h 
+sudo lvs 
+sudo mount /mydata/ 
+
+
+[student@localhost ~]$ sudo lvs
+VG   Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+ mylv myvg -wi-ao---- 756.00m
+
+[student@localhost ~]$ sudo pvs
+    VG   Fmt  Attr PSize    PFree
+ /dev/nvme0n2p1 myvg lvm2 a--   196.00m      0
+ /dev/nvme0n3   myvg lvm2 a--  1020.00m 460.00m
+
+[student@localhost ~]$ sudo vgs
+#PV #LV #SN Attr   VSize  VFree
+ myvg   2   1   0 wz--n- <1.19g 460.00m
+
+[student@localhost ~]$ df -h
+Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               4.0M     0  4.0M   0% /dev
+tmpfs                  1.8G     0  1.8G   0% /dev/shm
+t
+mpfs                  724M  9.5M  714M   2% /run
+/dev/nvme0n1p1          10G  5.4G  4.7G  54% /
+tmpfs                  362M   52K  362M   1% /run/user/42
+tmpfs                  362M   36K  362M   1% /run/user/1000
+/dev/mapper/myvg-mylv  703M   15K  668M   1% /mydata
+
+
+[student@localhost ~]$ sudo pvdisplay
+ --- Physical volume ---
+ PV Name               /dev/nvme0n2p1
+ VG Name               myvg
+ PV Size               200.00 MiB / not usable 4.00 MiB
+ Allocatable           yes (but full)
+ PE Size               4.00 MiB
+ Total PE              49
+ Free PE               0
+ Allocated PE          49
+ PV UUID               RQ7T3C-4lpx-2r1c-JQr7-cLkC-p8yH-dti7rd
+
+ --- Physical volume ---
+ PV Name               /dev/nvme0n3
+ VG Name               myvg
+ PV Size               1.00 GiB / not usable 4.00 MiB
+ Allocatable           yes
+ PE Size               4.00 MiB
+ Total PE              255
+ Free PE               115
+ Allocated PE          140
+ PV UUID               uozmJ3-opcD-XDfF-eEXJ-8FBA-ccdU-1zhKvd
+
+[student@localhost ~]$ sudo vgdisplay
+ --- Volume group ---
+ VG Name               myvg
+ System ID
+ Format                lvm2
+ Metadata Areas        2
+ Metadata Sequence No  10
+ VG Access             read/write
+ VG Status             resizable
+ MAX LV                0
+ Cur LV                1
+ Open LV               1
+ Max PV                0
+ Cur PV                2
+ Act PV                2
+ VG Size               <1.19 GiB
+ PE Size               4.00 MiB
+ Total PE              304
+ Alloc PE / Size       189 / 756.00 MiB
+ Free  PE / Size       115 / 460.00 MiB
+ VG UUID               cJ5npx-MocB-So1f-1bPG-24yC-zK0f-XmjvA6
+
+[student@localhost ~]$ sudo lvdisplay
+ --- Logical volume ---
+ LV Path                /dev/myvg/mylv
+ LV Name                mylv
+ VG Name                myvg
+ LV UUID                wd1mxA-ZUbA-sbNb-YvWs-I8gW-a1cP-b3oSBp
+ LV Write Access        read/write
+ LV Creation host, time localhost.localdomain, 2024-02-26 23:53:42 +0100
+ LV Status              available
+ # open                 1
+ LV Size                756.00 MiB
+ Current LE             189
+ Segments               2
+ Allocation             inherit
+ Read ahead sectors     auto
+ - currently set to     256
+ Block device           253:0
+
+[student@localhost ~]$
+sudo umount /mydata 
+sudo nano /etc/fstab
+sudo lvdisplay 
+sudo 
+sudo vgdisplay 
+vgremove myvg
+sudo vgremove myvg
+pvdisplay 
+sudp pvdisplay 
+sudo pvdisplay 
+sudo pvremove /dev/nvme0n2p1
+sudo pvremove /dev/nvme0n3
+sudo pvdisplay 
+sudp pvs
+sudp lvs
+sudo lvs
+sudo vgs
+sudo pvs
+sudo fdisk -l /dev/nvme0n2
+sudo fdisk -l /dev/nvme0n3
+sudo fdisk /dev/nvme0n2
+sudo fdisk /dev/nvme0n3
+sudo fdisk /dev/nvme0n2
+sudo pvcreate /dev/nvme0n2p1 /dev/nvme0n2p2 /dev/nvme0n3
+sudo wipefs /dev/nvme0n3
+sudo pvcreate /dev/nvme0n3
+sudo pvdisplay 
+sudo pvs
+sudo vgcreate vg /dev/nvme0n2p1 /dev/nvme0n2p2 /dev/nvme0n3
+sudo vgs
+sudo vgdisplay 
+sudo lvcreate -l 30%FREE -n lv2 vg
+sudo lvcreate -l 45%FREE -n lv1 vg
+sudo lvdisplay 
+sudo lvs
+sudo mkdir ~/data
+sudo mkdir ~/backup
+sudo nano /etc/fstab
+sudo mkfs.ext4 /dev/vg/lv1
+sudo mkfs.ext4 /dev/vg/lv2
+sudo nano /etc/fstab
+/dev/mapper/vg-lv1 
+/dev/mapper/vg-lv2
+sudo nano /etc/fstab
+sudo mount /dev/mapper/vg-lv1 /data/
+sudo mount /dev/mapper/vg-lv2 /backup/
+
+
+Filesystem          Size  Used Avail Use% Mounted on
+devtmpfs            4.0M     0  4.0M   0% /dev
+tmpfs               1.8G     0  1.8G   0% /dev/shm
+tmpfs               724M  9.5M  714M   2% /run
+/dev/nvme0n1p1       10G  5.4G  4.7G  54% /
+/dev/mapper/vg-lv2  515M   24K  477M   1% /backup
+/dev/mapper/vg-lv1  547M   24K  507M   1% /data
+tmpfs               362M   52K  362M   1% /run/user/42
+tmpfs               362M   36K  362M   1% /run/user/1000
+
+
+
+sudo fdisk /dev/sda
+sudo fdisk /dev/sdb
+sudo fdisk -l /dev/sda
+sudo fdisk -l /dev/sdb
+sudo fdisk -l /dev/sdc
+sudo pvcreate /dev/sda2
+pvdisplay
+sudo pvdisplay
+sudo pvs
+sudo vgcreate vg1 /dev/sda2
+sudo pvs
+sudo vgs
+sudo vgdisplay
+sudo vgdisplay vg1
+sudo lvcreate vg1 -n lv3 -L 300
+sudo lvdisplay lv3
+sudo lvs
+sudo lvdisplay
+sudo lvdisplay /dev/vg1/lv3
+sudo mkfs.ext4 /dev/mapper/vg1-lv3
+sudo lsblk -f /dev/mapper/vg1-lv3
+sudo mount /dev/mapper/vg1-lv3 /mnt
+touch /mnt/file
+sudo touch /mnt/file
+ll /mnt
+sudo lsblk -f /dev/mapper/vg1-lv3
+sudo nano /etc/fstab
+sudo reboot
+sudo lvs
+sudo lvdisplay
+ls /mnt/
+sudo lvextend -L 400M /dev/vg1/lv3
+sudo lvdisplay
+sudo resize2fs /dev/vg1/lv3
+df -h
+sudo lvcreate -s -n snap -L 300M /dev/vg1/lv3
+sudo umount /mnt
+sudo mount /mnt
+ls /mnt/
+sudo mkdir bckp
+sudo mount /dev/vg1/snap ~/bckp
+ls ~/bckp/
+sudo umount ~/bckp/
+sudo cp -r /home/student/* /mnt/
+du -h /mnt/ | tail -1
+sudo du -h /mnt/ | tail -1
+df -h
+sudo lvs
+sudo lvremove /vg1/snap
+sudo lvremove /dev/vg1/snap
+sudo lvs
+sudo lvdisplay lv3
+sudo lvdisplay vg1/lv3
